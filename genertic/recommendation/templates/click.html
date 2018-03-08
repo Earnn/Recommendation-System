@@ -1,0 +1,13 @@
+{% extends 'base.html' %}{% load static %} {% block content %}
+
+<br><br>
+<div class="uk-container">
+ {{nextPopulation}}
+
+{% for i in list_sorted %}
+<a><p>{{i.rule }} :	{{i.store.name }} </p></a>
+{% endfor %}
+
+</div>
+
+{% endblock %}
