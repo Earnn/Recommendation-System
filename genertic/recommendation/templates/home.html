@@ -1,3 +1,14 @@
 {% extends 'base.html' %}{% load static %} {% block content %}
-{{first_gen}}
+
+<br><br>
+<div class="uk-container">
+
+<hr>
+<div class="uk-column-1-4">
+{% for i in  store %}
+<a href="{% url 'click' i.store.name i.rule %}" ><p>{{i.rule }} :	{{i.store.name }} </p></a>
+{% endfor %}
+</div>
+</div>
+
 {% endblock %}
