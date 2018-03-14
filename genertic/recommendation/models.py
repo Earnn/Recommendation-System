@@ -52,3 +52,5 @@ class Store(models.Model):
 	# delivery_payment = models.FloatField(null=True, blank=True, default=None)
 	created_at = models.DateTimeField(auto_now_add=True,null=True,)
 
+
+

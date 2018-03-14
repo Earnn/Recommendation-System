@@ -1,14 +1,391 @@
 {% extends 'base.html' %}{% load static %} {% block content %}
+<style type="text/css">
+    /*	
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 35px;
+    height: 0;
+    overflow: hidden;
+    text-align: center;
 
-<br><br>
-<div class="uk-container">
+}
 
-<hr>
-<div class="uk-column-1-4">
-{% for i in  store %}
-<a href="{% url 'click' i.store.name i.rule %}" ><p>{{i.rule }} :	{{i.store.name }} </p></a>
-{% endfor %}
+.video-container iframe {
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 80%;
+    height: 48.5%;
+}*/
+
+.timeline {
+  list-style: none;
+  padding: 20px 0 20px;
+  position: relative;
+}
+.timeline:before {
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  content: " ";
+  width: 3px;
+  background-color: #eeeeee;
+  /*left: 50%;*/
+  margin-left: -1.5px;
+}
+.timeline > li {
+  margin-bottom: 20px;
+  position: relative;
+}
+.timeline > li:before,
+.timeline > li:after {
+  content: " ";
+  display: table;
+}
+.timeline > li:after {
+  clear: both;
+}
+.timeline > li:before,
+.timeline > li:after {
+  content: " ";
+  display: table;
+}
+.timeline > li:after {
+  clear: both;
+}
+.timeline > li > .timeline-panel {
+  width: 46%;
+  float: left;
+  border: 1px solid #d4d4d4;
+  border-radius: 2px;
+  padding: 20px;
+  position: relative;
+  -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+}
+.timeline > li > .timeline-panel:before {
+  position: absolute;
+  top: 26px;
+  right: -15px;
+  display: inline-block;
+  border-top: 15px solid transparent;
+  border-left: 15px solid #ccc;
+  border-right: 0 solid #ccc;
+  border-bottom: 15px solid transparent;
+  content: " ";
+}
+.timeline > li > .timeline-panel:after {
+  position: absolute;
+  top: 27px;
+  right: -14px;
+  display: inline-block;
+  border-top: 14px solid transparent;
+  border-left: 14px solid #fff;
+  border-right: 0 solid #fff;
+  border-bottom: 14px solid transparent;
+  content: " ";
+}
+.timeline > li > .timeline-badge {
+  color: #fff;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  font-size: 1.4em;
+  text-align: center;
+  position: absolute;
+  top: 16px;
+  /*left: 50%;*/
+  margin-left: -25px;
+  background-color: #999999;
+  z-index: 100;
+  border-top-right-radius: 50%;
+  border-top-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+  border-bottom-left-radius: 50%;
+}
+.timeline > li.timeline-inverted > .timeline-panel {
+  /*float: left;*/
+  left: 5%;
+}
+.timeline > li.timeline-inverted > .timeline-panel:before {
+  border-left-width: 0;
+  border-right-width: 15px;
+  left: -15px;
+  right: auto;
+}
+.timeline > li.timeline-inverted > .timeline-panel:after {
+  border-left-width: 0;
+  border-right-width: 14px;
+  left: -14px;
+  right: auto;
+}
+.timeline-badge.primary {
+  background-color: #2e6da4 !important;
+}
+.timeline-badge.success {
+  background-color: #3f903f !important;
+}
+.timeline-badge.warning {
+  background-color: #f0ad4e !important;
+}
+.timeline-badge.danger {
+  background-color: #d9534f !important;
+}
+.timeline-badge.info {
+  background-color: #5bc0de !important;
+}
+.timeline-title {
+  margin-top: 0;
+  color: inherit;
+}
+.timeline-body > p,
+.timeline-body > ul {
+  margin-bottom: 0;
+}
+.timeline-body > p + p {
+  margin-top: 5px;
+}
+
+
+   @media (max-width: 479px) {
+.timeline > li > .timeline-badge {
+  color: #fff;
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  font-size: 1.0em;
+
+  /*left: 50%;*/
+  margin-left: 10px;
+
+}
+
+
+.timeline:before {
+
+  margin-left: 28px;
+}
+
+.timeline > li > .timeline-panel {
+  width: 80%;
+  float: left;
+  border: 1px solid #d4d4d4;
+  border-radius: 2px;
+  padding: 20px;
+  position: relative;
+  -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+}
+
+.timeline > li.timeline-inverted > .timeline-panel {
+  /*float: left;*/
+  left: 17%;
+  top: -8px;
+}
+
+
+ iframe {
+ 
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 210px;
+}
+        }
+        @media (min-width: 480px) and (max-width: 767px) {
+      }
+        /* Small devices (tablets, 768px and up) */
+        @media (min-width: 768px) and (max-width: 992px) {
+			.timeline > li > .timeline-badge {
+			  color: #fff;
+			  width: 35px;
+			  height: 35px;
+			  line-height: 35px;
+			  font-size: 1.0em;
+
+			  /*left: 50%;*/
+			  margin-left: 10px;
+
+			}
+
+
+			.timeline:before {
+
+			  margin-left: 28px;
+			}
+
+			.timeline > li > .timeline-panel {
+			  width: 80%;
+			  float: left;
+			  border: 1px solid #d4d4d4;
+			  border-radius: 2px;
+			  padding: 20px;
+			  position: relative;
+			  -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+			  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+			}
+
+			.timeline > li.timeline-inverted > .timeline-panel {
+			  /*float: left;*/
+			  left: 17%;
+			  top: -8px;
+			}
+
+
+			 iframe {
+			 
+			    top:0;
+			    left: 0;
+			    width: 100%;
+			    height: 440px;
+			}
+        
+        }
+        /* Medium devices (desktops, 992px and up) */
+        @media (min-width: 993px) and (max-width: 1200px) {
+        
+        
+        
+        }
+        /* Large devices (large desktops, 1200px and up) */
+        @media (min-width: 1201px) {
+        
+        
+        }
+</style>
+<br>
+    <br>
+        <div class="uk-container">
+            <hr>
+                <div class="uk-column-1-4">
+                    {% for i in  store %}
+                    <a href="{% url 'click' i.store.name i.rule %}">
+                        <p>
+                            {{i.rule }} :	{{i.store.name }}
+                        </p>
+                    </a>
+                    {% endfor %}
+                </div>
+            </hr>
+        </div>
+        <div class="uk-section uk-section-muted">
+            <!-- <div class="uk-container"> -->
+            <h1 class="uk-text-center uk-margin-large-bottom">
+                <b>วิธีการใช้งาน</b>
+            </h1>
+            <div class="uk-grid-small uk-child-width-1-2@s" uk-grid="">
+                <div class="video-container uk-text-center">
+             
+                  <img  src="{% static "images/mobile.png" %}" style="width: 80%;height: auto;" >
+                </div>
+                <div>
+                   
+                    <ul class="timeline">
+                        <li class="timeline-inverted">
+                            <div class="timeline-badge warning">
+                                <h2 style="color:#fff; margin-top:6px;">1</h2>
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h2 class="timeline-title">
+                                       เข้าสู่ระบบ
+                                    </h2>
+                                </div>
+                                <div class="timeline-body">
+                                    <p>
+                                        เข้าสู่ระบบเพียง 2 คลิก พร้อมรับสิทธิพิเศษมากมายเมื่อกรอกประวัติความหิว
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="timeline-inverted">
+                            <div class="timeline-badge danger">
+                                <h2 style="color:#fff; margin-top:6px;">2</h2>
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h2 class="timeline-title">
+                                        เลือกร้านอาหาร
+                                    </h2>
+                                </div>
+                                <div class="timeline-body">
+                                    <p>
+                                        ค้นหาร้านอาหารที่คุณชื่นชอบ
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="timeline-inverted">
+                            <div class="timeline-badge info">
+                                 <h2 style="color:#fff; margin-top:6px;">3</h2>
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h2 class="timeline-title">
+                                        เลือกอาหาร
+                                    </h2>
+                                </div>
+                                <div class="timeline-body">
+                                    <p>
+                                        เลือกร้านอาหารที่คุณต้องการแล้วเพิ่มเข้าตะกร้าเลย !
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="timeline-inverted">
+                            <div class="timeline-badge success">
+                              <h2 style="color:#fff; margin-top:6px;">4</h2>
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h2 class="timeline-title">
+                                        ยืนยันการสั่งซื้อ
+                                    </h2>
+                                </div>
+                                <div class="timeline-body">
+                                    <p>
+                                        ตรวจสอบเมนูอาหาร และราคา พร้อมเลือกวิธีการชำระเงินด้วยพร้อมเพย์หรืจ่ายปลายทาง !
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="timeline-inverted">
+                            <div class="timeline-badge">
+                                <h2 style="color:#fff; margin-top:6px;">5</h2>
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h2 class="timeline-title">
+                                         รอรับอาหาร
+                                    </h2>
+                                </div>
+                                <div class="timeline-body">
+                                    <p>
+                                        พนักงานกินอิ่มจะทำการส่งอาหารถึงหอพักของท่านภายใน 30 - 45 นาที รอรับอาหารได้เลย
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- </div> -->
+            </div>
+            <div class="container">
+
+            </div>
+        </div>  
+
+        <div class="uk-section-secondary ">
+    <div class="uk-section uk-light uk-background-cover" style="background-image: url('{% static "images/food.png" %}'); ">
+        <div class=" uk-text-center ">
+        		<!-- <h1>ใช้บริการกินอิ่ม</h1> -->
+                <iframe class="" height="462" src="https://www.youtube.com/embed/LqUYE6csdek?rel=0&autoplay=1" width="820">
+                    </iframe>
+
+        </div>
+    </div>
 </div>
-</div>
-
+    </br>
+</br>
 {% endblock %}

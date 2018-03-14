@@ -5,7 +5,7 @@
  {{nextPopulation}}
 
 {% for i in list_sorted %}
-<a><p>{{i.rule }} :	{{i.store.name }} </p></a>
+<a href="{% url 'click' i.store.name i.rule %}"><p>{{i.rule }} :	{{i.store.name }} </p></a>
 {% endfor %}
 
 </div>
