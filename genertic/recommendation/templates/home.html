@@ -146,6 +146,113 @@
 .timeline-body > p + p {
   margin-top: 5px;
 }
+
+
+   @media (max-width: 479px) {
+.timeline > li > .timeline-badge {
+  color: #fff;
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  font-size: 1.0em;
+
+  /*left: 50%;*/
+  margin-left: 10px;
+
+}
+
+
+.timeline:before {
+
+  margin-left: 28px;
+}
+
+.timeline > li > .timeline-panel {
+  width: 80%;
+  float: left;
+  border: 1px solid #d4d4d4;
+  border-radius: 2px;
+  padding: 20px;
+  position: relative;
+  -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+}
+
+.timeline > li.timeline-inverted > .timeline-panel {
+  /*float: left;*/
+  left: 17%;
+  top: -8px;
+}
+
+
+ iframe {
+ 
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 210px;
+}
+        }
+        @media (min-width: 480px) and (max-width: 767px) {
+      }
+        /* Small devices (tablets, 768px and up) */
+        @media (min-width: 768px) and (max-width: 992px) {
+			.timeline > li > .timeline-badge {
+			  color: #fff;
+			  width: 35px;
+			  height: 35px;
+			  line-height: 35px;
+			  font-size: 1.0em;
+
+			  /*left: 50%;*/
+			  margin-left: 10px;
+
+			}
+
+
+			.timeline:before {
+
+			  margin-left: 28px;
+			}
+
+			.timeline > li > .timeline-panel {
+			  width: 80%;
+			  float: left;
+			  border: 1px solid #d4d4d4;
+			  border-radius: 2px;
+			  padding: 20px;
+			  position: relative;
+			  -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+			  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+			}
+
+			.timeline > li.timeline-inverted > .timeline-panel {
+			  /*float: left;*/
+			  left: 17%;
+			  top: -8px;
+			}
+
+
+			 iframe {
+			 
+			    top:0;
+			    left: 0;
+			    width: 100%;
+			    height: 440px;
+			}
+        
+        }
+        /* Medium devices (desktops, 992px and up) */
+        @media (min-width: 993px) and (max-width: 1200px) {
+        
+        
+        
+        }
+        /* Large devices (large desktops, 1200px and up) */
+        @media (min-width: 1201px) {
+        
+        
+        }
 </style>
 <br>
     <br>
@@ -165,7 +272,7 @@
         <div class="uk-section uk-section-muted">
             <!-- <div class="uk-container"> -->
             <h1 class="uk-text-center uk-margin-large-bottom">
-                วิธีการใช้งาน
+                <b>วิธีการใช้งาน</b>
             </h1>
             <div class="uk-grid-small uk-child-width-1-2@s" uk-grid="">
                 <div class="video-container uk-text-center">
@@ -271,9 +378,9 @@
 
         <div class="uk-section-secondary ">
     <div class="uk-section uk-light uk-background-cover" style="background-image: url('{% static "images/food.png" %}'); ">
-        <div class="uk-container uk-text-center">
-        		<h1>ใช้บริการกินอิ่ม</h1>
-                <iframe height="462" src="https://www.youtube.com/embed/LqUYE6csdek?rel=0&autoplay=1" width="820">
+        <div class=" uk-text-center ">
+        		<!-- <h1>ใช้บริการกินอิ่ม</h1> -->
+                <iframe class="" height="462" src="https://www.youtube.com/embed/LqUYE6csdek?rel=0&autoplay=1" width="820">
                     </iframe>
 
         </div>
