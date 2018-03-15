@@ -6,6 +6,45 @@ from .models import *
 import operator
 import random
 # Create your views here.
+def q_learning(request):
+	print(request.user)
+
+	count = Menues.objects.all().count()
+	slice = random.random() * (count )
+	# all_menues = Menues.objects.all()[slice: 4]
+	all_menues = list(Menues.objects.all())
+	random_menues = sorted(Menues.objects.all(), key=lambda x: random.random())
+	print(random_menues[:4])
+	info = Informations.objects.get(user=request.user)
+	print(info.japanese)
+
+	score = 0
+	# ordered
+	store_cate_from_order=[]
+	order = (12,13)
+	for i in order:
+		m = Menues.objects.get(id=i)
+		store_cate_from_order.append(m.store.category)
+		if m.store.category =="อาหารไทย":
+			if info.thai:
+				score+=1
+				
+
+
+	print("store_cate_from_order",store_cate_from_order)
+	# menu1 = Menues.objects.get(id=12)
+	# menu2 = Menues.objects.get(id=13)
+
+	
+	store_cate_thai = []
+	if info.thai:
+		store_cate_thai = Store.objects.filter(category="อาหารไทย")
+	print(store_cate_thai)	
+
+	# all_menues = Menues.object.all()[4:]
+
+
+	return render(request, 'qlearning.html',{'random_menues':random_menues,})
 
 
 def show(request,show_list):
@@ -210,7 +249,9 @@ def initial(request):
 def home(request):
 
 	s_list = initial(request)
+	print("s_list",s_list)
 	show_list = show(request,s_list)
+	print("show_list",show_list)
 
 
 	return render(request, 'home.html',{'store':show_list,'list_sorted':'list_sorted'})

@@ -1,5 +1,11 @@
+ # -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 from django.db import models
 from django.contrib.auth.models import User
+from django.forms import ModelForm, Textarea,TextInput,FileInput,ChoiceField,Select,BooleanField
+from datetime import datetime
+from django.contrib.postgres.fields import ArrayField
+
 # Create your models here.
 class Populations(models.Model):
 	user = models.ForeignKey(User, on_delete=models.SET_NULL,blank=True,null=True)
@@ -19,15 +25,6 @@ class Populations(models.Model):
 	chromosome10 = models.CharField(max_length=1,null=True, blank=True )
 
 
-class Menues(models.Model):
-
-	name = models.CharField(max_length=100)
-	price = models.FloatField(null=True, blank=True, default=None)
-	image=models.ImageField(upload_to='menu/',blank=True,null=True)
-	isSell = models.BooleanField(default=True)
-	created_at = models.DateTimeField(auto_now_add=True,null=True,)
-	def __str__(self):
-		return "%s"%(self.name)
 
 
 class Store(models.Model):
@@ -51,6 +48,60 @@ class Store(models.Model):
 	# delivery_boundary = models.CharField(max_length=1000,blank=True,null=True)
 	# delivery_payment = models.FloatField(null=True, blank=True, default=None)
 	created_at = models.DateTimeField(auto_now_add=True,null=True,)
+	def __str__(self):
+		return "%s"%(self.name)
+
+class Menues(models.Model):
+	
+	store = models.ForeignKey(Store,on_delete=models.SET_NULL,blank=True,null=True)
+	name = models.CharField(max_length=100)
+	price = models.FloatField(null=True, blank=True, default=None)
+	image=models.ImageField(upload_to='menu/',blank=True,null=True)
+	isSell = models.BooleanField(default=True)
+	created_at = models.DateTimeField(auto_now_add=True,null=True,)
+	def __str__(self):
+		return "%s"%(self.name)
 
 
+class StoreByUser(models.Model):
+	user = models.ForeignKey(User, on_delete=models.SET_NULL,blank=True,null=True)
+	store = models.ForeignKey(Store,on_delete=models.SET_NULL,blank=True,null=True)
+	created_at = models.DateTimeField(auto_now_add=True,null=True,)
+
+	
+class Informations(models.Model):
+	user = models.ForeignKey(User, on_delete=models.SET_NULL,blank=True,null=True)
+	age = models.IntegerField(default=0,blank=True,null=True)
+	birthdate = models.DateField(blank=True,null=True)
+	sex = models.CharField(max_length=10,blank=True,null=True)
+	salary = models.CharField(max_length=50,blank=True,null=True)
+	size = models.CharField(max_length=10,blank=True,null=True)
+	breakfast = models.BooleanField(default=0)
+	lunch = models.BooleanField(default=0)
+	dinner = models.BooleanField(default=0)
+	late = models.BooleanField(default=0)
+	# taste = models.BooleanField(default=0)
+	# price = models.BooleanField(default=0)
+	# service = models.BooleanField(default=0)
+	# clean = models.BooleanField(default=0)
+	# at = models.BooleanField(default=0)
+	# location = models.BooleanField(default=0)
+	# facebook = models.BooleanField(default=0)
+	# twitter = models.BooleanField(default=0)
+	# instagram = models.BooleanField(default=0)
+	# line = models.BooleanField(default=0)
+	japanese = models.BooleanField(default=0)
+	thai = models.BooleanField(default=0)
+	diet = models.BooleanField(default=0)
+	shabu = models.BooleanField(default=0)
+	grill = models.BooleanField(default=0)
+	steak = models.BooleanField(default=0)
+	fastfood = models.BooleanField(default=0)
+	cake = models.BooleanField(default=0)
+	dessert = models.BooleanField(default=0)
+	coffee = models.BooleanField(default=0)
+	juice = models.BooleanField(default=0)
+	created_at = models.DateTimeField(auto_now_add=True,null=True,)
+	def __str__(self):
+		return "%s"%(self.user)
 

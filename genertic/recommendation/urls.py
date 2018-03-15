@@ -7,7 +7,9 @@ from django.conf.urls.static import static
 urlpatterns = [
 
     url(r'^$', views.home, name='home'),
+    url(r'^ql/$', views.q_learning, name='q_learning'),
     url(r'^click/(?P<name>.*)/(?P<rule>.*)$', views.click, name='click'),
+    # url(r'^inf$', views.fill_in, name='inf'),
     # url(r'^search/$',views.search, name="search"),
     # url(r'^employer-search/$',views.employer_search, name="employer_search"),
     # url(r'^job-create/$',views.create_job, name="create_job"),
