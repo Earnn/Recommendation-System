@@ -15,10 +15,15 @@ class StoreAdmin(admin.ModelAdmin):
 	list_display=[f.name for f in Store._meta.fields]
 admin.site.register(Store, StoreAdmin)
 
-class StoreByUserAdmin(admin.ModelAdmin):
-	list_display=[f.name for f in StoreByUser._meta.fields]
-admin.site.register(StoreByUser, StoreByUserAdmin)
+class User_sessionAdmin(admin.ModelAdmin):
+	list_display=[f.name for f in User_session._meta.fields]
+admin.site.register(User_session, User_sessionAdmin)
 
 class InformationsAdmin(admin.ModelAdmin):
 	list_display=[f.name for f in Informations._meta.fields]
 admin.site.register(Informations, InformationsAdmin)
+
+
+class OrderAdmin(admin.ModelAdmin):
+	list_display=[f.name for f in Order._meta.fields]
+admin.site.register(Order, OrderAdmin)

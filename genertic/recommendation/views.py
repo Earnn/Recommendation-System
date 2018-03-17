@@ -5,12 +5,16 @@ import operator
 from .models import *
 import operator
 import random
+import operator
+import numpy as np
+
+
 # Create your views here.
 def q_learning(request):
 	print(request.user)
 
-	count = Menues.objects.all().count()
-	slice = random.random() * (count )
+	# count = Menues.objects.all().count()
+	# slice = random.random() * (count )
 	# all_menues = Menues.objects.all()[slice: 4]
 	all_menues = list(Menues.objects.all())
 	random_menues = sorted(Menues.objects.all(), key=lambda x: random.random())
@@ -18,20 +22,21 @@ def q_learning(request):
 	info = Informations.objects.get(user=request.user)
 	print(info.japanese)
 
-	score = 0
-	# ordered
-	store_cate_from_order=[]
-	order = (12,13)
-	for i in order:
-		m = Menues.objects.get(id=i)
-		store_cate_from_order.append(m.store.category)
-		if m.store.category =="อาหารไทย":
-			if info.thai:
-				score+=1
+	createActions(request)
+
+
+	
+	# order = (12,13)
+	# for i in order:
+	# 	m = Menues.objects.get(id=i)
+	# 	store_cate_from_order.append(m.store.category)
+	# 	if m.store.category =="อาหารไทย":
+	# 		if info.thai:
+	# 			score+=1
 				
 
 
-	print("store_cate_from_order",store_cate_from_order)
+	# print("store_cate_from_order",store_cate_from_order)
 	# menu1 = Menues.objects.get(id=12)
 	# menu2 = Menues.objects.get(id=13)
 
@@ -39,12 +44,124 @@ def q_learning(request):
 	store_cate_thai = []
 	if info.thai:
 		store_cate_thai = Store.objects.filter(category="อาหารไทย")
-	print(store_cate_thai)	
+	# print(store_cate_thai)	
 
 	# all_menues = Menues.object.all()[4:]
 
 
 	return render(request, 'qlearning.html',{'random_menues':random_menues,})
+
+def createActions(request):
+	epsilon = 0.7
+	random_probability = np.random.rand()
+	actions = []
+	# menu_list = []
+	if random_probability > epsilon: # explore
+		pass
+	else: # Act greedy , selected based on value
+				
+		logs = User_session.objects.filter(user=request.user,action="enter_store")
+		enter_store_list = []
+		for i in logs:
+			enter_store_list.append(i.value)
+			print("enter_store",i.value)
+		my_dict = {i:enter_store_list.count(i) for i in enter_store_list}
+		# print("my_dict",my_dict)
+		max_entered = max(my_dict.items(), key=operator.itemgetter(1))[0]
+		# print("co",max_entered)
+		split = max_entered.split(",")
+		print("lensp",len(split))
+		if len(split) == 2:
+			random_menues = sorted(Menues.objects.filter(store__id=split[0],store__name=split[1]), key=lambda x: random.random())
+
+		elif len(split) == 1:
+			random_menues = sorted(Menues.objects.filter(store__name=split[0]), key=lambda x: random.random())
+
+		for i in random_menues[:1]:
+			temp_actions = {"menu":i}
+			actions.append(temp_actions)
+
+
+
+# len(temp)
+
+	score = 0
+	store_cate_from_order=[]
+	 
+	# ordered
+	# ordered_list = []
+	all_ordered = Order.objects.filter(user=request.user)
+	# print(ordered_list)
+	# my_dict = {i:list(ordered_list).count(i) for i in list(ordered_list)}
+	# print("my_dict",my_dict)
+	o_dict = {}
+	order_store_list = []
+	for i in all_ordered:
+		
+		# m = Menues.objects.get(id=o.)
+		for menu_id,amount in zip(i.menu,i.amount):
+			temp = {"menu":None,"amount":amount}
+
+			# ma = {'menu':None,'amount':a,}
+			m = Menues.objects.get(id=menu_id)
+			order_store_list.append(m.store)
+			temp["menu"] = m.name
+			# print("o_dict",o_dict)	
+			if m in o_dict:
+				print("in if")
+				v = o_dict[m] 
+				new_val = int(v)+1
+				o_dict[m] = new_val
+			else:
+				o_dict[m] = int(amount)
+
+	print("o_dict",o_dict)		
+	max_ordered = max(o_dict.items(), key=operator.itemgetter(1))[0]
+	print("max_ordered",max_ordered)
+	random_menues = sorted(Menues.objects.filter(store=max_ordered.store), key=lambda x: random.random())
+	for i in random_menues[:1]:
+		temp_actions = {"menu":i}
+		actions.append(temp_actions)
+
+
+	random_store = sorted(order_store_list, key=lambda x: random.random())
+	random_menues = sorted(Menues.objects.filter(store=random_store[0]), key=lambda x: random.random())
+	# for i in random_menues[:1]:
+	count = len(random_menues)
+	ran_num = random.randint(0, count-1) 
+	# print("ran_num",ran_num)
+	temp_actions = {"menu":random_menues[ran_num]}
+	# print("actions before loop",actions)
+	while True:
+
+		# for i in actions:
+		if temp_actions in actions:
+			# a = [x for x in actions if x != temp_actions]
+			# print ("a",a)
+			# actions = a
+			ran_num = random.randint(0, count-1) 
+			temp_actions = {"menu":random_menues[ran_num]}
+			# actions.append(temp_actions)
+		else:
+			actions.append(temp_actions)
+			print("temp_actions",temp_actions)
+			break
+
+	# if len(actions) == 2
+	# if temp_actions in actions:
+	# 	ran_num = random.randint(0, count-1) 
+	# 	temp_actions = {"menu":random_menues[ran_num]}
+	# 	actions.append(temp_actions)
+
+
+				 
+
+		
+	print("actions",actions)
+	# print("ordered_list",ordered_list)		# 
+	# count = Menues.objects.filter(store=m.store).count()
+			# print("count",count)
+
 
 
 def show(request,show_list):

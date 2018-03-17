@@ -62,12 +62,20 @@ class Menues(models.Model):
 	def __str__(self):
 		return "%s"%(self.name)
 
-
-class StoreByUser(models.Model):
+class User_session(models.Model):
 	user = models.ForeignKey(User, on_delete=models.SET_NULL,blank=True,null=True)
-	store = models.ForeignKey(Store,on_delete=models.SET_NULL,blank=True,null=True)
+	action = models.CharField(max_length=50,blank=True,null=True)
+	value = models.CharField(max_length=100,blank=True,null=True)
 	created_at = models.DateTimeField(auto_now_add=True,null=True,)
 
+class Order(models.Model):
+	store = models.ForeignKey(Store,on_delete=models.SET_NULL,blank=True,null=True)
+	menu = ArrayField(models.CharField(max_length=500), blank=True,null=True)
+	amount = ArrayField(models.CharField(max_length=500), blank=True,null=True)
+	user = models.ForeignKey(User, on_delete=models.SET_NULL,blank=True,null=True)
+	created_at = models.DateTimeField(auto_now_add=True,null=True,)
+	def __str__(self):
+		return "%s"%(self.menu)
 	
 class Informations(models.Model):
 	user = models.ForeignKey(User, on_delete=models.SET_NULL,blank=True,null=True)
