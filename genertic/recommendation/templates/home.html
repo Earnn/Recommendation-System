@@ -55,7 +55,7 @@
   clear: both;
 }
 .timeline > li > .timeline-panel {
-  /*width: 80%;*/
+  width: 80%;
   float: left;
   border: 1px solid #d4d4d4;
   border-radius: 2px;
@@ -249,11 +249,16 @@
         
         }
         /* Large devices (large desktops, 1200px and up) */
-        @media (min-width: 1201px) {
-        	.timeline > li > .timeline-panel {
-			  width: 50%;
-			 
-			}
+        @media (min-width: 1201px) and (max-width: 1900px) {
+     .timeline > li > .timeline-panel {
+     width: 80%;
+         
+   }
+        @media (min-width: 1920px)  {
+     .timeline > li > .timeline-panel {
+     width: 50%;
+         
+   }
         
         }
 </style>
@@ -272,7 +277,123 @@
                 </div>
             </hr>
         </div>
+        <div class="uk-section uk-section-muted">
+            <!-- <div class="uk-container"> -->
+            <h1 class="uk-text-center uk-margin-large-bottom">
+                <b>วิธีการใช้งาน</b>
+            </h1>
+            <div class="uk-grid-small uk-child-width-1-2@s" uk-grid="">
+                <div class="video-container uk-text-center">
+             
+                  <img  src="{% static "images/mobile.png" %}" style="width: 80%;height: auto;" >
+                </div>
+                <div>
+                   
+                    <ul class="timeline">
+                        <li class="timeline-inverted">
+                            <div class="timeline-badge warning">
+                                <h2 style="color:#fff; margin-top:6px;">1</h2>
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h2 class="timeline-title">
+                                       เข้าสู่ระบบ
+                                    </h2>
+                                </div>
+                                <div class="timeline-body">
+                                    <p>
+                                        เข้าสู่ระบบเพียง 2 คลิก พร้อมรับสิทธิพิเศษมากมายเมื่อกรอกประวัติความหิว
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="timeline-inverted">
+                            <div class="timeline-badge danger">
+                                <h2 style="color:#fff; margin-top:6px;">2</h2>
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h2 class="timeline-title">
+                                        เลือกร้านอาหาร
+                                    </h2>
+                                </div>
+                                <div class="timeline-body">
+                                    <p>
+                                        ค้นหาร้านอาหารที่คุณชื่นชอบ
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="timeline-inverted">
+                            <div class="timeline-badge info">
+                                 <h2 style="color:#fff; margin-top:6px;">3</h2>
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h2 class="timeline-title">
+                                        เลือกอาหาร
+                                    </h2>
+                                </div>
+                                <div class="timeline-body">
+                                    <p>
+                                        เลือกร้านอาหารที่คุณต้องการแล้วเพิ่มเข้าตะกร้าเลย !
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="timeline-inverted">
+                            <div class="timeline-badge success">
+                              <h2 style="color:#fff; margin-top:6px;">4</h2>
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h2 class="timeline-title">
+                                        ยืนยันการสั่งซื้อ
+                                    </h2>
+                                </div>
+                                <div class="timeline-body">
+                                    <p>
+                                        ตรวจสอบเมนูอาหาร และราคา พร้อมเลือกวิธีการชำระเงินด้วยพร้อมเพย์หรืจ่ายปลายทาง !
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="timeline-inverted">
+                            <div class="timeline-badge">
+                                <h2 style="color:#fff; margin-top:6px;">5</h2>
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h2 class="timeline-title">
+                                         รอรับอาหาร
+                                    </h2>
+                                </div>
+                                <div class="timeline-body">
+                                    <p>
+                                        พนักงานกินอิ่มส่งอาหารถึงหอพักของท่านภายใน 30 - 45 นาที รอรับอาหารได้เลย
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- </div> -->
+            </div>
+            <div class="container">
 
+            </div>
+        </div>  
+
+        <div class="uk-section-secondary ">
+    <div class="uk-section uk-light uk-background-cover" style="background-image: url('{% static "images/food.png" %}'); ">
+        <div class=" uk-text-center ">
+        		<!-- <h1>ใช้บริการกินอิ่ม</h1> -->
+                <iframe class="" height="462" src="https://www.youtube.com/embed/LqUYE6csdek?rel=0&autoplay=1" width="820">
+                    </iframe>
+
+        </div>
+    </div>
+</div>
     </br>
 </br>
 {% endblock %}
