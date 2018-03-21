@@ -78,27 +78,38 @@ class NPArray(models.Model):
 		return "%s"%(self.q_array)
 class Board(models.Model):
 	user = models.ForeignKey(User, on_delete=models.SET_NULL,blank=True,null=True)
-	pieces = ArrayField(ArrayField(models.IntegerField()))
+	Q_array = ArrayField(ArrayField(models.FloatField()
+		),default=[[0., 0., 0., 0.],[0., 0., 0., 0.],[0., 0., 0., 0.],[0., 0., 0., 0.],[0., 0., 0., 0.],
+		[0., 0., 0., 0.],
+		[0., 0., 0., 0.],
+		[0., 0., 0., 0.],
+		[0., 0., 0., 0.],])
+	R_array = ArrayField(ArrayField(models.FloatField()
+		),default=[[0., 0., 0., 0.],[0., 0., 0., 0.],[0., 0., 0., 0.],[0., 0., 0., 0.],[0., 0., 0., 0.],
+		[0., 0., 0., 0.],
+		[0., 0., 0., 0.],
+		[0., 0., 0., 0.],
+		[0., 0., 0., 0.],])
 
 # Valid
-Board(pieces=[[0., 0., 0., 0.],
-       [0., 0., 0., 0.],
-       [0., 0., 0., 0.],
-       [0., 0., 0., 0.],
-       [0., 0., 0., 0.],
-       [0., 0., 0., 0.],
-       [0., 0., 0., 0.],
-       [0., 0., 0., 0.],
-       [0., 0., 0., 0.],
-       [0., 0., 0., 0.],
-       [0., 0., 0., 0.],
-       [0., 0., 0., 0.],
-       [0., 0., 0., 0.],
-       [0., 0., 0., 0.],
-       [0., 0., 0., 0.],
-       [0., 0., 0., 0.]])
+# Board(pieces=[[0., 0., 0., 0.],
+#        [0., 0., 0., 0.],
+#        [0., 0., 0., 0.],
+#        [0., 0., 0., 0.],
+#        [0., 0., 0., 0.],
+#        [0., 0., 0., 0.],
+#        [0., 0., 0., 0.],
+#        [0., 0., 0., 0.],
+#        [0., 0., 0., 0.],
+#        [0., 0., 0., 0.],
+#        [0., 0., 0., 0.],
+#        [0., 0., 0., 0.],
+#        [0., 0., 0., 0.],
+#        [0., 0., 0., 0.],
+#        [0., 0., 0., 0.],
+#        [0., 0., 0., 0.]])
 
-# Not valid
+# # Not valid
 
 class Populations(models.Model):
 	user = models.ForeignKey(User, on_delete=models.SET_NULL,blank=True,null=True)
