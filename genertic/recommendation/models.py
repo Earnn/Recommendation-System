@@ -24,7 +24,14 @@ class Populations(models.Model):
 	chromosome9 = models.CharField(max_length=1 ,null=True, blank=True)
 	chromosome10 = models.CharField(max_length=1,null=True, blank=True )
 
-
+class Qtable(models.Model):
+	table = ArrayField(
+        ArrayField(
+            models.IntegerField(max_length=10, blank=True),
+            size=8,
+        ),
+        size=8,
+    )
 
 
 class Store(models.Model):

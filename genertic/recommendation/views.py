@@ -164,6 +164,10 @@ def createActions(request):
 
 
 
+def create_q_table(request):
+	return render(request, 'qlearning.html',{})
+
+
 def show(request,show_list):
 	list_sorted = []
 
