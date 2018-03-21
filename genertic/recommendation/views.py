@@ -186,9 +186,6 @@ def createActions(request):
 def show(request,show_list):
 	list_sorted = []
 
-	
-
-	
 	for li in show_list :
 		duplicate = ""	
 		new_dic = {'rule' : '' , 'store' : []}
@@ -256,11 +253,11 @@ def show(request,show_list):
 
 def initial(request):
 	size_population = 4
-	best_sample = 3
-	lucky_few = 3
-	number_of_child = 5
-	number_of_generation = 25
-	chance_of_mutation = 5
+	# best_sample = 3
+	# lucky_few = 3
+	# number_of_child = 5
+	# number_of_generation = 25
+	# chance_of_mutation = 5
 	cate = ['0000','0001','0010','0011','0100','0101','0110','0111','1000','1001','1010','1011','1100','1101']
 	price = ['000','001','010','011','100']
 	place = ['0','1']
@@ -625,8 +622,5 @@ def createChild(individual1, individual2):
 			c = child[0:4]
 			pr = child[4:7]
 			pl = child[7:8]
-
-
-
 
 	return child
