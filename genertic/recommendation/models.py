@@ -8,74 +8,74 @@ from django.contrib.postgres.fields import ArrayField
 
 # Create your models here.
 
-class NPArray(models.Model):
-	user = models.ForeignKey(User, on_delete=models.SET_NULL,blank=True,null=True)
-	q_array = ArrayField(models.CharField(max_length=1000,default=[[0., 0., 0., 0.],
-       [0., 0., 0., 0.],
-       [0., 0., 0., 0.],
-       [0., 0., 0., 0.],
-       [0., 0., 0., 0.],
-       [0., 0., 0., 0.],
-       [0., 0., 0., 0.],
-       [0., 0., 0., 0.],
-       [0., 0., 0., 0.],
-       [0., 0., 0., 0.],
-       [0., 0., 0., 0.],
-       [0., 0., 0., 0.],
-       [0., 0., 0., 0.],
-       [0., 0., 0., 0.],
-       [0., 0., 0., 0.],
-       [0., 0., 0., 0.]]),blank=True,null=True
+# class NPArray(models.Model):
+# 	user = models.ForeignKey(User, on_delete=models.SET_NULL,blank=True,null=True)
+# 	q_array = ArrayField(models.CharField(max_length=1000,default=[[0., 0., 0., 0.],
+#        [0., 0., 0., 0.],
+#        [0., 0., 0., 0.],
+#        [0., 0., 0., 0.],
+#        [0., 0., 0., 0.],
+#        [0., 0., 0., 0.],
+#        [0., 0., 0., 0.],
+#        [0., 0., 0., 0.],
+#        [0., 0., 0., 0.],
+#        [0., 0., 0., 0.],
+#        [0., 0., 0., 0.],
+#        [0., 0., 0., 0.],
+#        [0., 0., 0., 0.],
+#        [0., 0., 0., 0.],
+#        [0., 0., 0., 0.],
+#        [0., 0., 0., 0.]]),blank=True,null=True
            
-        )
- #    # Valid
-	# NPArray(q_array=[
- #    [2, 3],
- #    [2, 1],
-	# ])
+#         )
+#  #    # Valid
+# 	# NPArray(q_array=[
+#  #    [2, 3],
+#  #    [2, 1],
+# 	# ])
 
     
-	r_array = ArrayField(ArrayField(models.IntegerField(blank=True,null=True)),blank=True,null=True)
-	# (r_array=[
- #    [2, 3],
- #    [2, 1],
-	# ])
+# 	r_array = ArrayField(ArrayField(models.IntegerField(blank=True,null=True)),blank=True,null=True)
+# 	# (r_array=[
+#  #    [2, 3],
+#  #    [2, 1],
+# 	# ])
 
-	created_at = models.DateTimeField(auto_now_add=True,null=True,)
-	# r_array=[[0., 0., 0., 0.],
- #       [0., 0., 0., 0.],
- #       [0., 0., 0., 0.],
- #       [0., 0., 0., 0.],
- #       [0., 0., 0., 0.],
- #       [0., 0., 0., 0.],
- #       [0., 0., 0., 0.],
- #       [0., 0., 0., 0.],
- #       [0., 0., 0., 0.],
- #       [0., 0., 0., 0.],
- #       [0., 0., 0., 0.],
- #       [0., 0., 0., 0.],
- #       [0., 0., 0., 0.],
- #       [0., 0., 0., 0.],
- #       [0., 0., 0., 0.],
- #       [0., 0., 0., 0.]]
-	# q_array=[[0., 0., 0., 0.],
- #       [0., 0., 0., 0.],
- #       [0., 0., 0., 0.],
- #       [0., 0., 0., 0.],
- #       [0., 0., 0., 0.],
- #       [0., 0., 0., 0.],
- #       [0., 0., 0., 0.],
- #       [0., 0., 0., 0.],
- #       [0., 0., 0., 0.],
- #       [0., 0., 0., 0.],
- #       [0., 0., 0., 0.],
- #       [0., 0., 0., 0.],
- #       [0., 0., 0., 0.],
- #       [0., 0., 0., 0.],
- #       [0., 0., 0., 0.],
- #       [0., 0., 0., 0.]]
-	def __str__(self):
-		return "%s"%(self.q_array)
+# 	created_at = models.DateTimeField(auto_now_add=True,null=True,)
+# 	# r_array=[[0., 0., 0., 0.],
+#  #       [0., 0., 0., 0.],
+#  #       [0., 0., 0., 0.],
+#  #       [0., 0., 0., 0.],
+#  #       [0., 0., 0., 0.],
+#  #       [0., 0., 0., 0.],
+#  #       [0., 0., 0., 0.],
+#  #       [0., 0., 0., 0.],
+#  #       [0., 0., 0., 0.],
+#  #       [0., 0., 0., 0.],
+#  #       [0., 0., 0., 0.],
+#  #       [0., 0., 0., 0.],
+#  #       [0., 0., 0., 0.],
+#  #       [0., 0., 0., 0.],
+#  #       [0., 0., 0., 0.],
+#  #       [0., 0., 0., 0.]]
+# 	# q_array=[[0., 0., 0., 0.],
+#  #       [0., 0., 0., 0.],
+#  #       [0., 0., 0., 0.],
+#  #       [0., 0., 0., 0.],
+#  #       [0., 0., 0., 0.],
+#  #       [0., 0., 0., 0.],
+#  #       [0., 0., 0., 0.],
+#  #       [0., 0., 0., 0.],
+#  #       [0., 0., 0., 0.],
+#  #       [0., 0., 0., 0.],
+#  #       [0., 0., 0., 0.],
+#  #       [0., 0., 0., 0.],
+#  #       [0., 0., 0., 0.],
+#  #       [0., 0., 0., 0.],
+#  #       [0., 0., 0., 0.],
+#  #       [0., 0., 0., 0.]]
+# 	def __str__(self):
+# 		return "%s"%(self.q_array)
 class Board(models.Model):
 	user = models.ForeignKey(User, on_delete=models.SET_NULL,blank=True,null=True)
 	Q_array = ArrayField(ArrayField(models.FloatField()
@@ -127,15 +127,6 @@ class Populations(models.Model):
 	chromosome8 = models.CharField(max_length=1 ,null=True, blank=True)
 	chromosome9 = models.CharField(max_length=1 ,null=True, blank=True)
 	chromosome10 = models.CharField(max_length=1,null=True, blank=True )
-
-class Qtable(models.Model):
-	table = ArrayField(
-        ArrayField(
-            models.IntegerField(max_length=10, blank=True),
-            size=8,
-        ),
-        size=8,
-    )
 
 
 class Store(models.Model):
