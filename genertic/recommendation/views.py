@@ -21,7 +21,26 @@ def q_learning(request):
 	print(random_menues[:4])
 	info = Informations.objects.get(user=request.user)
 	print(info.japanese)
+	# c_arr = Board.objects.create(user=request.user)
 
+	b = Board.objects.get(user=request.user)
+	print("p",b.pieces)
+	print("type",type(b.pieces))
+	# arr = NPArray.objects.get(user=request.user)
+	# print("arr",arr.q_array)
+	# print("r ",arr.r_array)
+	# # listtoarr=np.asarray(arr.q_array)
+	# print("type",type(arr.q_array))
+	# print("ty listtoarr",type(np.array(arr.r_array)))
+	# Q = np.array(arr.r_array)
+	# # Q[2,3]=100.0
+	# print("Q",Q)
+	# q_array = Q
+	# # NPArray.objects.filter(user=request.user).update(q_array=Q.tolist())
+	# print("Q",Q.shape)
+	# arr = NPArray.objects.get(user=request.user)
+	# print("arr",arr.q_array)
+	# print("r ",arr.r_array)
 	createActions(request)
 
 

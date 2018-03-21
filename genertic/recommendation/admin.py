@@ -23,7 +23,13 @@ class InformationsAdmin(admin.ModelAdmin):
 	list_display=[f.name for f in Informations._meta.fields]
 admin.site.register(Informations, InformationsAdmin)
 
-
+class NPArrayAdmin(admin.ModelAdmin):
+	list_display=[f.name for f in NPArray._meta.fields]
+admin.site.register(NPArray, NPArrayAdmin)
 class OrderAdmin(admin.ModelAdmin):
 	list_display=[f.name for f in Order._meta.fields]
 admin.site.register(Order, OrderAdmin)
+
+class BoardAdmin(admin.ModelAdmin):
+	list_display=[f.name for f in Board._meta.fields]
+admin.site.register(Board, BoardAdmin)

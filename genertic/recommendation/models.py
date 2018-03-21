@@ -7,6 +7,99 @@ from datetime import datetime
 from django.contrib.postgres.fields import ArrayField
 
 # Create your models here.
+
+class NPArray(models.Model):
+	user = models.ForeignKey(User, on_delete=models.SET_NULL,blank=True,null=True)
+	q_array = ArrayField(models.CharField(max_length=1000,default=[[0., 0., 0., 0.],
+       [0., 0., 0., 0.],
+       [0., 0., 0., 0.],
+       [0., 0., 0., 0.],
+       [0., 0., 0., 0.],
+       [0., 0., 0., 0.],
+       [0., 0., 0., 0.],
+       [0., 0., 0., 0.],
+       [0., 0., 0., 0.],
+       [0., 0., 0., 0.],
+       [0., 0., 0., 0.],
+       [0., 0., 0., 0.],
+       [0., 0., 0., 0.],
+       [0., 0., 0., 0.],
+       [0., 0., 0., 0.],
+       [0., 0., 0., 0.]]),blank=True,null=True
+           
+        )
+ #    # Valid
+	# NPArray(q_array=[
+ #    [2, 3],
+ #    [2, 1],
+	# ])
+
+    
+	r_array = ArrayField(ArrayField(models.IntegerField(blank=True,null=True)),blank=True,null=True)
+	# (r_array=[
+ #    [2, 3],
+ #    [2, 1],
+	# ])
+
+	created_at = models.DateTimeField(auto_now_add=True,null=True,)
+	# r_array=[[0., 0., 0., 0.],
+ #       [0., 0., 0., 0.],
+ #       [0., 0., 0., 0.],
+ #       [0., 0., 0., 0.],
+ #       [0., 0., 0., 0.],
+ #       [0., 0., 0., 0.],
+ #       [0., 0., 0., 0.],
+ #       [0., 0., 0., 0.],
+ #       [0., 0., 0., 0.],
+ #       [0., 0., 0., 0.],
+ #       [0., 0., 0., 0.],
+ #       [0., 0., 0., 0.],
+ #       [0., 0., 0., 0.],
+ #       [0., 0., 0., 0.],
+ #       [0., 0., 0., 0.],
+ #       [0., 0., 0., 0.]]
+	# q_array=[[0., 0., 0., 0.],
+ #       [0., 0., 0., 0.],
+ #       [0., 0., 0., 0.],
+ #       [0., 0., 0., 0.],
+ #       [0., 0., 0., 0.],
+ #       [0., 0., 0., 0.],
+ #       [0., 0., 0., 0.],
+ #       [0., 0., 0., 0.],
+ #       [0., 0., 0., 0.],
+ #       [0., 0., 0., 0.],
+ #       [0., 0., 0., 0.],
+ #       [0., 0., 0., 0.],
+ #       [0., 0., 0., 0.],
+ #       [0., 0., 0., 0.],
+ #       [0., 0., 0., 0.],
+ #       [0., 0., 0., 0.]]
+	def __str__(self):
+		return "%s"%(self.q_array)
+class Board(models.Model):
+	user = models.ForeignKey(User, on_delete=models.SET_NULL,blank=True,null=True)
+	pieces = ArrayField(ArrayField(models.IntegerField()))
+
+# Valid
+Board(pieces=[[0., 0., 0., 0.],
+       [0., 0., 0., 0.],
+       [0., 0., 0., 0.],
+       [0., 0., 0., 0.],
+       [0., 0., 0., 0.],
+       [0., 0., 0., 0.],
+       [0., 0., 0., 0.],
+       [0., 0., 0., 0.],
+       [0., 0., 0., 0.],
+       [0., 0., 0., 0.],
+       [0., 0., 0., 0.],
+       [0., 0., 0., 0.],
+       [0., 0., 0., 0.],
+       [0., 0., 0., 0.],
+       [0., 0., 0., 0.],
+       [0., 0., 0., 0.]])
+
+# Not valid
+
 class Populations(models.Model):
 	user = models.ForeignKey(User, on_delete=models.SET_NULL,blank=True,null=True)
 	chromosome1 = models.CharField(max_length=1,null=True, blank=True )
